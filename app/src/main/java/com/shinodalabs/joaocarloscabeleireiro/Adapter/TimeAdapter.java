@@ -14,8 +14,7 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 
 import java.util.List;
 
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.AVAILABLE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.UNAVAILABLE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
 
 public class TimeAdapter extends BaseAdapter {
 
@@ -52,7 +51,7 @@ public class TimeAdapter extends BaseAdapter {
 
         if (convertView == null) {
 
-            if (time.getResult().equals(AVAILABLE)) {
+            if (time.getResult().equals(URL_200)) {
                 v = inflater.inflate(R.layout.time_tile_green, null);
             } else {
                 v = inflater.inflate(R.layout.time_tile_red, null);

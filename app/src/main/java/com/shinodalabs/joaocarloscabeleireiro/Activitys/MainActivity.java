@@ -32,14 +32,14 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 
 import java.util.Calendar;
 
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.AVAILABLE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.RESULT;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.UNAVAILABLE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_404;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_ADD_SCHEDULED_TIME;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, BottomSheetDialogService.BottomSheetListener, BottomSheetDialogTime.BottomSheetListener {
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         try {
                             String result = r.get(RESULT).getAsString();
 
-                            if (result.equals(AVAILABLE)) {
+                            if (result.equals(URL_200)) {
                                 if (dialog.isShowing()) {
                                     dialog.dismiss();
                                 }
@@ -275,11 +275,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onTimeSelected(String id, String time, String result) {
-        if (result.equals(AVAILABLE)) {
+        if (result.equals(URL_200)) {
             this.time = id;
             timeName = time;
             showTileState(time, tileImageTime, sideTime, tvTimeSelected);
-        } else if (result.equals(UNAVAILABLE)) {
+        } else if (result.equals(URL_404)) {
             Toasts.toastInfo(getApplicationContext(), getString(R.string.unavailable_time));
         }
     }
