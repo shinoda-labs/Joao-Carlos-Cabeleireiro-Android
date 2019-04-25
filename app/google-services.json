@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "531139377819",
+    "firebase_url": "https://joao-carlos-cabeleireiro.firebaseio.com",
+    "project_id": "joao-carlos-cabeleireiro",
+    "storage_bucket": "joao-carlos-cabeleireiro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531139377819:android:c797e6a7fa36effc",
+        "android_client_info": {
+          "package_name": "com.shinodalabs.joaocarloscabeleireiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531139377819-ph0i8eu5ursaieihnj3qjle2r3ooi4ms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shinodalabs.joaocarloscabeleireiro",
+            "certificate_hash": "ef0c5fb33b62a2e1bb24faf9ab0447f204df9113"
+          }
+        },
+        {
+          "client_id": "531139377819-cf4784su5h2keuq4j24uklceria6lfje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZwVgHU7yFqOKbkrSJ8zgl69246y24gac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531139377819-cf4784su5h2keuq4j24uklceria6lfje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

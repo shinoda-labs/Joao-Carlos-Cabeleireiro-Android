@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">João Carlos Cabeleireiro</string>
+    <string name="services">Serviços</string>
+    <string name="date">Data</string>
+    <string name="time">Horário</string>
+    <string name="select_time">Selecione uma data para escolher um horário!</string>
+    <string name="select_date">Selecione um serviço para escolher uma data!</string>
+    <string name="times">Horários</string>
+    <string name="unavailable_time">Este horário está indisponível!</string>
+    <string name="schedule">Agendar</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="login_message">Bem vindo! Crie sua conta para você \n agendar seus horários para cortar \n seu cabelo!</string>
+    <string name="not_loged">Você não esta logado</string>
+    <string name="not_loged_msg">Para marcar um horário comigo, preciso saber quem você é, Ok?</string>
+    <string name="ok_log_in">Ok, quero logar!</string>
+    <string name="login_canceled">Login cancelado!</string>
+    <string name="choose_service">Escolha um Serviço</string>
+    <string name="choose_date">Escolha uma Data</string>
+    <string name="choose_time">Escolha um Horário</string>
+    <string name="verify_correct_data">Verifique se os dados estão corretos!</string>
+    <string name="client_show">Cliente: </string>
+    <string name="service_show">Serviço:</string>
+    <string name="date_show">Data:</string>
+    <string name="time_show">Horário:</string>
+    <string name="data_correct">Os dados estão corretos?</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="schedule_time">Agendar Horário</string>
+    <string name="error_save_data">Erro ao salvar os dados, tente novamente mais tarde!</string>
+    <string name="please_wait">Por favor, aguarde</string>
+    <string name="saving_data">Salvando seus dados</string>
+    <string name="schedule_success">, seu hórario foi agendado com sucesso!</string>
+
+</resources>
