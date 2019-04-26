@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,13 +36,13 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 
 import java.util.Calendar;
 
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.RESULT;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_404;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_ADD_SCHEDULED_TIME;
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivService, ivDate, ivTime;
     private TextView tvService, tvServiceSelected, tvDate, tvDateSelected, tvTime, tvTimeSelected;
     private Button btnSchedule;
+    private Toolbar toolbar;
 
     private String service = "";
     private String serviceName = "";
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void castWidgets() {
+        toolbar = findViewById(R.id.toolbar);
         cvService = findViewById(R.id.cvService);
         cvDate = findViewById(R.id.cvDate);
         cvTime = findViewById(R.id.cvTime);
@@ -117,12 +123,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cvDate.setOnClickListener(this);
         cvTime.setOnClickListener(this);
         btnSchedule.setOnClickListener(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.app_name);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser == null) {
+            logout();
+        } else {
+            getSupportActionBar().setSubtitle(getString(R.string.hello) + " " + mUser.getDisplayName() + ", " + getString(R.string.welcome) + "!");
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_exit:
+                new MaterialStyledDialog.Builder(this)
+                        .setTitle(getString(R.string.exit_title))
+                        .setIcon(R.drawable.exit)
+                        .setCancelable(false)
+                        .setDescription(getString(R.string.exit_msg))
+                        .setPositiveText(getString(R.string.exit))
+                        .setNegativeText(getString(R.string.cancel))
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                mAuth.signOut();
+                                logout();
+                            }
+                        }).onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                    }
+                }).show();
+                break;
+            case R.id.nav_about:
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -199,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         new MaterialStyledDialog.Builder(this)
                                 .setTitle(getString(R.string.not_loged))
                                 .setIcon(R.drawable.login)
+                                .setCancelable(false)
                                 .setDescription(getString(R.string.not_loged_msg))
                                 .setPositiveText(getString(R.string.ok_log_in))
                                 .onPositive(new MaterialDialog.SingleButtonCallback() {
@@ -324,10 +377,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
                 .setLabel(title)
                 .setDetailsLabel(message)
-                .setCancellable(true)
+                .setCancellable(false)
                 .setAnimationSpeed(2)
                 .setDimAmount(0.5f);
         dialog.show();
+    }
+
+    private void logout() {
+        mAuth.signOut();
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 }

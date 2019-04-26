@@ -12,7 +12,7 @@
     <string name="schedule">Agendar</string>
     <string name="facebook">Facebook</string>
     <string name="google">Google</string>
-    <string name="login_message">Bem vindo! Crie sua conta para você \n agendar seus horários para cortar \n seu cabelo!</string>
+    <string name="login_message">Bem vindo! Crie sua conta ou logue para \n você agendar seus horários para cortar \n seu cabelo!</string>
     <string name="not_loged">Você não esta logado</string>
     <string name="not_loged_msg">Para marcar um horário comigo, preciso saber quem você é, Ok?</string>
     <string name="ok_log_in">Ok, quero logar!</string>
@@ -41,5 +41,17 @@
     <string name="hello_back">, que bom que você voltou!</string>
     <string name="proceed">Prosseguir</string>
     <string name="erro_save_user_data">Erro ao salvar seus dados, tente novamente mais tarde!</string>
+    <string name="not_loged_main">Olá, você não esta logado!</string>
+    <string name="exit">Sair</string>
+    <string name="exit_msg">Você deseja realmente desconectar sua conta?</string>
+    <string name="exit_title">Está Cedo!</string>
+    <string name="about">Sobre</string>
+    <string name="version">Versão</string>
+    <string name="developed">Desenvolvedor</string>
+    <string name="conect_with_us">Fale Conosco</string>
+    <string name="contact">Contato</string>
+    <string name="talk_whats">Fale comigo pelo WhatsApp</string>
+    <string name="shinoda_labs">Shinoda Labs ©</string>
+    <string name="about_desc">Aplicativo criado para o agendamento de cortes de cabelo, e maior facilidade para os amigos e clientes</string>
 
 </resources>

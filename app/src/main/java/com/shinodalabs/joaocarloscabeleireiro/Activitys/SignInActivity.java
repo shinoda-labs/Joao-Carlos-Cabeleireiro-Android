@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -52,7 +51,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private CardView btnFacebook, btnGoogle;
     private TextView tvFacebook, tvGoogle, tvText;
     private Toolbar toolbar;
-    private ImageButton btnBack;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -68,7 +66,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         mAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
-
 
         castWidgets();
         setTypeface();
@@ -113,9 +110,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnGoogle:
                 signInGoogle();
                 break;
-            case R.id.btnBack:
-                finish();
-                break;
         }
     }
 
@@ -154,6 +148,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onCompleted(Exception e, JsonObject result) {
                         try {
                             String r = result.get(RESULT).getAsString();
+                            final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
                             if (dialog.isShowing()) {
                                 dialog.dismiss();
@@ -163,12 +158,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 new MaterialStyledDialog.Builder(SignInActivity.this)
                                         .setTitle(getString(R.string.welcome))
                                         .setIcon(R.drawable.barber)
+                                        .setCancelable(false)
                                         .setDescription(getString(R.string.hello) + " " + name + getString(R.string.hello_msg))
                                         .setPositiveText(getString(R.string.proceed))
                                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                                             @Override
                                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                finish();
+                                                startActivity(intent);
                                             }
                                         }).show();
                             } else if (r.equals(URL_404)) {
@@ -177,13 +173,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             } else if (r.equals(URL_400)) {
                                 new MaterialStyledDialog.Builder(SignInActivity.this)
                                         .setTitle(getString(R.string.welcome_back))
+                                        .setCancelable(false)
                                         .setIcon(R.drawable.barber)
                                         .setDescription(getString(R.string.hello) + " " + name + getString(R.string.hello_back))
                                         .setPositiveText(getString(R.string.proceed))
                                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                                             @Override
                                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                finish();
+                                                startActivity(intent);
                                             }
                                         }).show();
                             }
@@ -216,10 +213,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         tvFacebook = findViewById(R.id.tvFacebook);
         tvGoogle = findViewById(R.id.tvGoogle);
         tvText = findViewById(R.id.tvText);
-        btnBack = findViewById(R.id.btnBack);
         btnFacebook.setOnClickListener(this);
         btnGoogle.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
     }
 
     private void createDialog(String title, String message) {
