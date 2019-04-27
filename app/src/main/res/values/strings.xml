@@ -28,7 +28,6 @@
     <string name="data_correct">Os dados estão corretos?</string>
     <string name="confirm">Confirmar</string>
     <string name="cancel">Cancelar</string>
-    <string name="schedule_time">Agendar Horário</string>
     <string name="error_save_data">Erro ao salvar os dados, tente novamente mais tarde!</string>
     <string name="please_wait">Por favor, aguarde</string>
     <string name="saving_data">Salvando seus dados</string>
@@ -53,5 +52,14 @@
     <string name="talk_whats">Fale comigo pelo WhatsApp</string>
     <string name="shinoda_labs">Shinoda Labs ©</string>
     <string name="about_desc">Aplicativo criado para o agendamento de cortes de cabelo, e maior facilidade para os amigos e clientes</string>
+    <string name="soon">Em Breve!</string>
+    <string name="navigation_drawe_open">Abrir Navigation Drawer</string>
+    <string name="navigation_drawe_close">Fechar Navigation Drawer</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scedule_time">Agendar Horário</string>
+    <string name="my_schedules">Meus Horários</string>
+    <string name="done">Concluídos</string>
+    <string name="others">Outros</string>
+    <string name="sign_out">Sair</string>
 
 </resources>

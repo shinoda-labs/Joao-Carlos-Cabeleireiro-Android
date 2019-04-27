@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -95,6 +96,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
+                Log.e("Login", e.getMessage());
                 Toasts.toastInfo(getApplicationContext(), getString(R.string.login_canceled));
             }
         }
@@ -114,7 +116,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void signInFacebook() {
-
+        Toasts.toastInfo(getApplicationContext(), getString(R.string.soon));
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
