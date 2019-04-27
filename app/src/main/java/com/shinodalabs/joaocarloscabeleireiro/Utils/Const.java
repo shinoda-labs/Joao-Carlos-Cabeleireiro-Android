@@ -15,6 +15,7 @@ public class Const {
     public static final String IMAGE_USER = "image_user";
     public static final String ID_SCHEDULE = "id_schedule";
     public static final String ID_SERVICE = "id_service";
+    public static final String PHONE_USER = "phone_user";
 
     public static final String URL_200 = "200";
     public static final String URL_404 = "404";

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedulesFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.ProfileFragment;
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.ScheduleTimeFragment;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.squareup.picasso.Picasso;
@@ -85,6 +86,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_about:
                 Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.nav_edit_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment())
+                        .commit();
+                getSupportActionBar().setSubtitle(getString(R.string.profile));
+                ViewCompat.setElevation(toolbar, 5);
                 break;
             case R.id.nav_exit:
                 logout();

@@ -14,4 +14,10 @@ public class Url {
     public static final String URL_ADD_USER_DATA =
             "http://joaocarloscabeleireiro-com-br.umbler.net/user/add_user_data.php";
 
+    public static final String URL_EDIT_USER_PROFILE =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user/edit_user_profile.php";
+
+    public static final String URL_GET_USER_DATA =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user/get_user_data.php";
+
 }

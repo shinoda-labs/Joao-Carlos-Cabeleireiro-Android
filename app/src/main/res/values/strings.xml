@@ -61,5 +61,18 @@
     <string name="done">Concluídos</string>
     <string name="others">Outros</string>
     <string name="sign_out">Sair</string>
+    <string name="personal_data">Dados Pessoais</string>
+    <string name="email">E-mail</string>
+    <string name="display_name">Nome de exibição</string>
+    <string name="whats_app">WhatsApp</string>
+    <string name="profile">Perfil</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="save">Salvar</string>
+    <string name="fill_whats_app">Preecha o número de seu WhatsApp</string>
+    <string name="check_whats_app">Confira se seu número do WhatsApp está correto!</string>
+    <string name="wish_save">Deseja salvar?</string>
+    <string name="success_save_data">Dados salvos com sucesso!</string>
+    <string name="getting_data">Buscando seus dados</string>
+    <string name="erro_get_user_data">Erro ao buscar seus dados</string>
 
 </resources>

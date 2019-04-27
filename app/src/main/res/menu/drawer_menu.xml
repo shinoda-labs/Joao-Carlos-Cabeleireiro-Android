@@ -17,6 +17,19 @@
 
     </group>
 
+    <item android:title="@string/profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_edit_profile"
+                android:icon="@drawable/user"
+                android:title="@string/edit_profile" />
+
+        </menu>
+
+    </item>
+
     <item android:title="@string/others">
 
         <menu>
