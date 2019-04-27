@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ScheduleAllFragment">
+    tools:context=".Fragments.MySchedules.ScheduleAllFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,6 +14,7 @@
             android:id="@+id/lstSchedule"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:divider="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -29,6 +30,21 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lstSchedule"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lstSchedule" />
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/no_time_scheduled"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/lstSchedule"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

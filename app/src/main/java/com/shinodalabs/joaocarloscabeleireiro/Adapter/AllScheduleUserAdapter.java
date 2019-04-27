@@ -15,11 +15,11 @@ import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CANCELED;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DONE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 
 public class AllScheduleUserAdapter extends BaseAdapter {
 
@@ -65,11 +65,24 @@ public class AllScheduleUserAdapter extends BaseAdapter {
         TextView tvPrice = v.findViewById(R.id.tvPrice);
         TextView tvDate = v.findViewById(R.id.tvDate);
         TextView tvTime = v.findViewById(R.id.tvTime);
+        View vStatus = v.findViewById(R.id.vStatus);
 
         tvService.setTypeface(Fonts.TypefaceBold(v.getContext()));
         tvPrice.setTypeface(Fonts.TypefaceLight(v.getContext()));
         tvDate.setTypeface(Fonts.TypefaceLight(v.getContext()));
         tvTime.setTypeface(Fonts.TypefaceLight(v.getContext()));
+
+        switch (all.getStatus()) {
+            case SCHEDULED:
+                vStatus.setBackgroundColor(context.getResources().getColor(R.color.colorYellow));
+                break;
+            case DONE:
+                vStatus.setBackgroundColor(context.getResources().getColor(R.color.colorGreen));
+                break;
+            case CANCELED:
+                vStatus.setBackgroundColor(context.getResources().getColor(R.color.colorRed));
+                break;
+        }
 
         Picasso.get().load(all.getImage()).into(tvImage);
         tvService.setText(all.getName());
