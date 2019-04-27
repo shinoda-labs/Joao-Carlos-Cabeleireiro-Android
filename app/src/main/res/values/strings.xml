@@ -74,5 +74,6 @@
     <string name="success_save_data">Dados salvos com sucesso!</string>
     <string name="getting_data">Buscando seus dados</string>
     <string name="erro_get_user_data">Erro ao buscar seus dados</string>
+    <string name="loading">Carregando</string>
 
 </resources>

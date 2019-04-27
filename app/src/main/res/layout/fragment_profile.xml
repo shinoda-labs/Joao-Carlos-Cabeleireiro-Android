@@ -37,7 +37,8 @@
                     android:text="@string/personal_data"
                     android:textColor="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <android.support.design.widget.TextInputLayout

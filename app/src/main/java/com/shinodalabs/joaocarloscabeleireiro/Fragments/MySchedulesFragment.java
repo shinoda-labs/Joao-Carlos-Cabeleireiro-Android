@@ -26,6 +26,7 @@ public class MySchedulesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_my_schedules, container, false);
 
         TabLayout tabLayout = v.findViewById(R.id.tabs_schedules);
+        tabLayout.addTab(tabLayout.newTab().setText("Todos"));
         tabLayout.addTab(tabLayout.newTab().setText("Concluidos"));
         tabLayout.addTab(tabLayout.newTab().setText("Cancelados"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

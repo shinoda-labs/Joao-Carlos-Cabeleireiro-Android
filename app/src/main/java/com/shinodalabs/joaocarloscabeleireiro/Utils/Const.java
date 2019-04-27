@@ -13,6 +13,10 @@ public class Const {
     public static final String ID_USER = "id_user";
     public static final String NAME_USER = "name_user";
     public static final String IMAGE_USER = "image_user";
+    public static final String IMAGE_SERVICE = "image_service";
+    public static final String NAME_SERVICE = "name_service";
+    public static final String PRICE_SERVICE = "price_service";
+    public static final String TIME_SCHEDULE = "time_schedule";
     public static final String ID_SCHEDULE = "id_schedule";
     public static final String ID_SERVICE = "id_service";
     public static final String PHONE_USER = "phone_user";

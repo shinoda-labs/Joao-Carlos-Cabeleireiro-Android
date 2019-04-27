@@ -257,6 +257,8 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
 
         lstService.setAdapter(adapterService);
 
+        servicesList.clear();
+
         lstService.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -322,6 +324,8 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
         adapterTime = new TimeAdapter(getActivity(), timeList);
 
         gvTime.setAdapter(adapterTime);
+
+        timeList.clear();
 
         gvTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

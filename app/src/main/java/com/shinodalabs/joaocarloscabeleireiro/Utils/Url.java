@@ -20,4 +20,7 @@ public class Url {
     public static final String URL_GET_USER_DATA =
             "http://joaocarloscabeleireiro-com-br.umbler.net/user/get_user_data.php";
 
+    public static  final String URL_PREVIEW_SCHEDULE =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/get_preview_schedule.php";
+
 }
