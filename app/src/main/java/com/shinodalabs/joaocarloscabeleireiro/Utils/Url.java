@@ -20,16 +20,11 @@ public class Url {
     public static final String URL_GET_USER_DATA =
             "http://joaocarloscabeleireiro-com-br.umbler.net/user/get_user_data.php";
 
-    public static  final String URL_PREVIEW_ALL_SCHEDULE =
-            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_all_schedule.php";
+    public static  final String URL_PREVIEW_ALL_CLIENT_SCHEDULE =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_all_client_schedule.php";
 
-    public static  final String URL_PREVIEW_SCHEDULED_SCHEDULE =
-            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_scheduled_schedule.php";
+    public static  final String URL_PREVIEW_CLIENT_SCHEDULE =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_client_schedule.php";
 
-    public static  final String URL_PREVIEW_DONE_SCHEDULED =
-            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_done_schedule.php";
-
-    public static  final String URL_PREVIEW_CANCELED_SCHEDULE =
-            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/preview_canceled_schedule.php";
 
 }

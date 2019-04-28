@@ -35,7 +35,7 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NAME_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.PRICE_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.STATUS_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME_SCHEDULE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_ALL_SCHEDULE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_ALL_CLIENT_SCHEDULE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +74,7 @@ public class ScheduleAllFragment extends Fragment {
         scheduleUserList.clear();
 
         Ion.with(v.getContext())
-                .load(URL_PREVIEW_ALL_SCHEDULE)
+                .load(URL_PREVIEW_ALL_CLIENT_SCHEDULE)
                 .setBodyParameter(ID_USER, mAuth.getCurrentUser().getUid())
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {

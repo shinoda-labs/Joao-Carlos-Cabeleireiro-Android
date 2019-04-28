@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DONE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.IMAGE_SERVICE;
@@ -35,7 +36,7 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NAME_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.PRICE_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.STATUS_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME_SCHEDULE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_DONE_SCHEDULED;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_CLIENT_SCHEDULE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,8 +76,9 @@ public class ScheduleDoneFragment extends Fragment {
         scheduleUserList.clear();
 
         Ion.with(v.getContext())
-                .load(URL_PREVIEW_DONE_SCHEDULED)
+                .load(URL_PREVIEW_CLIENT_SCHEDULE)
                 .setBodyParameter(ID_USER, mAuth.getCurrentUser().getUid())
+                .setBodyParameter(STATUS_SCHEDULE, DONE)
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override

@@ -27,6 +27,7 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CANCELED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
@@ -35,7 +36,7 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NAME_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.PRICE_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.STATUS_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME_SCHEDULE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_CANCELED_SCHEDULE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_CLIENT_SCHEDULE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,8 +76,9 @@ public class ScheduleCanceledFragment extends Fragment {
         scheduleUserList.clear();
 
         Ion.with(v.getContext())
-                .load(URL_PREVIEW_CANCELED_SCHEDULE)
+                .load(URL_PREVIEW_CLIENT_SCHEDULE)
                 .setBodyParameter(ID_USER, mAuth.getCurrentUser().getUid())
+                .setBodyParameter(STATUS_SCHEDULE, CANCELED)
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override
