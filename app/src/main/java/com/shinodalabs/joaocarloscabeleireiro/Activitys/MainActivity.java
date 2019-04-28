@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedulesFragment;
@@ -94,7 +97,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ViewCompat.setElevation(toolbar, 5);
                 break;
             case R.id.nav_exit:
-                logout();
+                new MaterialStyledDialog.Builder(this)
+                        .setTitle(getString(R.string.exit_title))
+                        .setIcon(R.drawable.exit)
+                        .setCancelable(false)
+                        .setDescription(getString(R.string.exit_msg))
+                        .setPositiveText(getString(R.string.exit))
+                        .setNegativeText(getString(R.string.cancel))
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                mAuth.signOut();
+                                logout();
+                            }
+                        }).onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                }).show();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -105,9 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser == null) {
-            Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            logout();
         } else {
             setupHeader();
         }
@@ -115,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void logout() {
-        mAuth.signOut();
         Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

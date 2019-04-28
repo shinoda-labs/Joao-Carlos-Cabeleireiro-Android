@@ -1,11 +1,13 @@
 package com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,11 +15,11 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.kaopiz.kprogresshud.KProgressHUD;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.shinodalabs.joaocarloscabeleireiro.Activitys.ViewScheduleClientActivity;
 import com.shinodalabs.joaocarloscabeleireiro.Adapter.AllScheduleUserAdapter;
-import com.shinodalabs.joaocarloscabeleireiro.Model.AllScheduleUser;
+import com.shinodalabs.joaocarloscabeleireiro.Model.ScheduleUser;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
@@ -44,7 +46,7 @@ public class ScheduleAllFragment extends Fragment {
     private ProgressBar pbLoaging;
     private TextView tvNoData;
     private AllScheduleUserAdapter adapter;
-    private List<AllScheduleUser> allScheduleUserList;
+    private List<ScheduleUser> scheduleUserList;
     private FirebaseAuth mAuth;
 
     public ScheduleAllFragment() {
@@ -64,12 +66,12 @@ public class ScheduleAllFragment extends Fragment {
         tvNoData = v.findViewById(R.id.tvNoData);
         tvNoData.setTypeface(Fonts.TypefaceLight(v.getContext()));
 
-        allScheduleUserList = new ArrayList<AllScheduleUser>();
-        adapter = new AllScheduleUserAdapter(getActivity(), allScheduleUserList);
+        scheduleUserList = new ArrayList<ScheduleUser>();
+        adapter = new AllScheduleUserAdapter(getActivity(), scheduleUserList);
 
         lstSchedule.setAdapter(adapter);
 
-        allScheduleUserList.clear();
+        scheduleUserList.clear();
 
         Ion.with(v.getContext())
                 .load(URL_PREVIEW_ALL_SCHEDULE)
@@ -85,7 +87,7 @@ public class ScheduleAllFragment extends Fragment {
                                 for (int i = 0; i < result.size(); i++) {
                                     JsonObject jsonObject = result.get(i).getAsJsonObject();
 
-                                    AllScheduleUser all = new AllScheduleUser();
+                                    ScheduleUser all = new ScheduleUser();
                                     all.setId(jsonObject.get(ID_SCHEDULE).getAsString());
                                     all.setImage(jsonObject.get(IMAGE_SERVICE).getAsString());
                                     all.setName(jsonObject.get(NAME_SERVICE).getAsString());
@@ -94,7 +96,7 @@ public class ScheduleAllFragment extends Fragment {
                                     all.setTime(jsonObject.get(TIME_SCHEDULE).getAsString());
                                     all.setStatus(jsonObject.get(STATUS_SCHEDULE).getAsString());
 
-                                    allScheduleUserList.add(all);
+                                    scheduleUserList.add(all);
                                 }
                             }
 
@@ -106,6 +108,16 @@ public class ScheduleAllFragment extends Fragment {
                         }
                     }
                 });
+
+        lstSchedule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ScheduleUser user = (ScheduleUser) parent.getAdapter().getItem(position);
+                Intent intent = new Intent(getContext(), ViewScheduleClientActivity.class);
+                intent.putExtra(ID_SCHEDULE, user.getId());
+                startActivity(intent);
+            }
+        });
 
 
         return v;

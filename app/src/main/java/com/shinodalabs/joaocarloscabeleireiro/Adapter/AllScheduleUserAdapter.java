@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.shinodalabs.joaocarloscabeleireiro.Model.AllScheduleUser;
+import com.shinodalabs.joaocarloscabeleireiro.Model.ScheduleUser;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.squareup.picasso.Picasso;
@@ -24,21 +24,21 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 public class AllScheduleUserAdapter extends BaseAdapter {
 
     private Context context;
-    private List<AllScheduleUser> allScheduleUsersList;
+    private List<ScheduleUser> scheduleUsersList;
 
-    public AllScheduleUserAdapter(Context c, List<AllScheduleUser> l) {
+    public AllScheduleUserAdapter(Context c, List<ScheduleUser> l) {
         this.context = c;
-        this.allScheduleUsersList = l;
+        this.scheduleUsersList = l;
     }
 
     @Override
     public int getCount() {
-        return allScheduleUsersList.size();
+        return scheduleUsersList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return allScheduleUsersList.get(position);
+        return scheduleUsersList.get(position);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AllScheduleUserAdapter extends BaseAdapter {
             v = convertView;
         }
 
-        AllScheduleUser all = (AllScheduleUser) getItem(position);
+        ScheduleUser all = (ScheduleUser) getItem(position);
 
         ImageView tvImage = v.findViewById(R.id.ivImage);
         TextView tvService = v.findViewById(R.id.tvService);

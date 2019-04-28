@@ -78,5 +78,6 @@
     <string name="no_time_scheduled">Você não tem nenhum horário marcado ainda</string>
     <string name="no_time_scheduled_done">Você não tem nenhum horário marcado que ja tenha sido terminado.</string>
     <string name="no_time_scheduled_canceled">Você não tem nenhum horário marcado cancelado</string>
+    <string name="schedule_subtitle">Agendamento #</string>
 
 </resources>

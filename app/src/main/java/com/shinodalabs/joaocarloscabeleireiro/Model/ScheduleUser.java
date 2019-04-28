@@ -1,6 +1,6 @@
 package com.shinodalabs.joaocarloscabeleireiro.Model;
 
-public class AllScheduleUser {
+public class ScheduleUser {
 
     private String result;
     private String id;
