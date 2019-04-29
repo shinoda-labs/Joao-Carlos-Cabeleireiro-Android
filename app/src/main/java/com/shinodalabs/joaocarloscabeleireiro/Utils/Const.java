@@ -21,6 +21,7 @@ public class Const {
     public static final String ID_SERVICE = "id_service";
     public static final String PHONE_USER = "phone_user";
     public static final String STATUS_SCHEDULE = "status_schedule";
+    public static final String CONFIRMED_SCHEDULE = "confirmed_schedule";
 
     public static final String URL_200 = "200";
     public static final String URL_404 = "404";
@@ -28,6 +29,8 @@ public class Const {
     public static final String SCHEDULED = "0";
     public static final String DONE = "1";
     public static final String CANCELED = "2";
+    public static final String CONFIRMED = "1";
+    public static final String NOT_CONFIRMED = "0";
 
     public static final int GOOGLE_SIGN_IN_CODE = 101;
 

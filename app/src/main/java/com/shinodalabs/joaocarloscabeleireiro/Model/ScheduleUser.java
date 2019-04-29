@@ -10,6 +10,7 @@ public class ScheduleUser {
     private String image;
     private String price;
     private String status;
+    private String confirmed;
 
     public String getResult() {
         return result;
@@ -73,5 +74,13 @@ public class ScheduleUser {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(String confirmed) {
+        this.confirmed = confirmed;
     }
 }

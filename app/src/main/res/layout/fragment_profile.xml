@@ -29,12 +29,16 @@
 
 
                 <TextView
-                    android:id="@+id/tvPersonalData"
+                    android:id="@+id/tvDetailSchedule"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
                     android:padding="16dp"
                     android:text="@string/personal_data"
+                    android:shadowColor="@color/colorShadow"
+                    android:shadowDx="0.5"
+                    android:shadowDy="0.5"
+                    android:shadowRadius="2"
                     android:textColor="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +55,7 @@
                     android:hint="@string/display_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPersonalData">
+                    app:layout_constraintTop_toBottomOf="@+id/tvDetailSchedule">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/etDisplayName"

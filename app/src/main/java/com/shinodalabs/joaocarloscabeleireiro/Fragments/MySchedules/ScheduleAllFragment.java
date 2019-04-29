@@ -18,7 +18,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.shinodalabs.joaocarloscabeleireiro.Activitys.ViewScheduleClientActivity;
-import com.shinodalabs.joaocarloscabeleireiro.Adapter.AllScheduleUserAdapter;
+import com.shinodalabs.joaocarloscabeleireiro.Adapter.ScheduleUserAdapter;
 import com.shinodalabs.joaocarloscabeleireiro.Model.ScheduleUser;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
@@ -45,7 +45,7 @@ public class ScheduleAllFragment extends Fragment {
     private ListView lstSchedule;
     private ProgressBar pbLoaging;
     private TextView tvNoData;
-    private AllScheduleUserAdapter adapter;
+    private ScheduleUserAdapter adapter;
     private List<ScheduleUser> scheduleUserList;
     private FirebaseAuth mAuth;
 
@@ -67,7 +67,7 @@ public class ScheduleAllFragment extends Fragment {
         tvNoData.setTypeface(Fonts.TypefaceLight(v.getContext()));
 
         scheduleUserList = new ArrayList<ScheduleUser>();
-        adapter = new AllScheduleUserAdapter(getActivity(), scheduleUserList);
+        adapter = new ScheduleUserAdapter(getActivity(), scheduleUserList);
 
         lstSchedule.setAdapter(adapter);
 

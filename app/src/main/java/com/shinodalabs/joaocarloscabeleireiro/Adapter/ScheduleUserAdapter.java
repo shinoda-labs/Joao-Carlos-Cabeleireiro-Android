@@ -21,12 +21,12 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CANCELED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DONE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 
-public class AllScheduleUserAdapter extends BaseAdapter {
+public class ScheduleUserAdapter extends BaseAdapter {
 
     private Context context;
     private List<ScheduleUser> scheduleUsersList;
 
-    public AllScheduleUserAdapter(Context c, List<ScheduleUser> l) {
+    public ScheduleUserAdapter(Context c, List<ScheduleUser> l) {
         this.context = c;
         this.scheduleUsersList = l;
     }

@@ -58,7 +58,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="scedule_time">Agendar Horário</string>
     <string name="my_schedules">Meus Horários</string>
-    <string name="done">Concluídos</string>
+    <string name="dones">Concluídos</string>
     <string name="others">Outros</string>
     <string name="sign_out">Sair</string>
     <string name="personal_data">Dados Pessoais</string>
@@ -74,10 +74,27 @@
     <string name="success_save_data">Dados salvos com sucesso!</string>
     <string name="getting_data">Buscando seus dados</string>
     <string name="erro_get_user_data">Erro ao buscar seus dados</string>
-    <string name="loading">Carregando</string>
+    <string name="loading">Carregando …</string>
     <string name="no_time_scheduled">Você não tem nenhum horário marcado ainda</string>
     <string name="no_time_scheduled_done">Você não tem nenhum horário marcado que ja tenha sido terminado.</string>
     <string name="no_time_scheduled_canceled">Você não tem nenhum horário marcado cancelado</string>
     <string name="schedule_subtitle">Agendamento #</string>
+    <string name="schedule_detail">Detalhes do Agendamento</string>
+    <string name="type_service">Tipo de Serviço</string>
+    <string name="schedule_date">Data do Agendamento</string>
+    <string name="service_price">Preço do Serviço</string>
+    <string name="time_schedule">Horário do Agendamento</string>
+    <string name="schedule_status">Status do Agendamento</string>
+    <string name="confirmed_schedule">Agendamento Confirmado</string>
+    <string name="scheduled">Agendado</string>
+    <string name="canceled">Cancelado</string>
+    <string name="done">Concluído</string>
+    <string name="no">Não</string>
+    <string name="yes">Sim</string>
+    <string name="schedule_options">Opções do Agendamento</string>
+    <string name="cancel_schedule">Cancelar Horário</string>
+    <string name="error_load_data">Erro ao carregados os dados</string>
+    <string name="schedule_done_cancel_msg">Este agendamento já esta concluido, e não pode ser cancelado!</string>
+    <string name="schedule_canceled_cancel_msg">Este agendamento já está cancelado!</string>
 
 </resources>

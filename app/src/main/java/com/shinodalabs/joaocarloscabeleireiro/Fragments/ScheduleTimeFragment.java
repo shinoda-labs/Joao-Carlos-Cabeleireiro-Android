@@ -145,7 +145,7 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
         ivTime = v.findViewById(R.id.ivTime);
         tvService = v.findViewById(R.id.tvService);
         tvServiceSelected = v.findViewById(R.id.tvServiceSelected);
-        tvDate = v.findViewById(R.id.tvDate);
+        tvDate = v.findViewById(R.id.tvPrice);
         tvDateSelected = v.findViewById(R.id.tvDateSelected);
         tvTime = v.findViewById(R.id.tvTime);
         tvTimeSelected = v.findViewById(R.id.tvTimeSelected);

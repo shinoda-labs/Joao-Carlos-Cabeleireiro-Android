@@ -200,7 +200,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void castWidgets() {
-        tvPersonalData = v.findViewById(R.id.tvPersonalData);
+        tvPersonalData = v.findViewById(R.id.tvDetailSchedule);
         tilName = v.findViewById(R.id.tilDisplayName);
         tilEmail = v.findViewById(R.id.tilEmail);
         tilWhats = v.findViewById(R.id.tilWhatsApp);
