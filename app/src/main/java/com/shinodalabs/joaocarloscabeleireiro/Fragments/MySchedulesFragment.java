@@ -29,9 +29,7 @@ public class MySchedulesFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Todos"));
         tabLayout.addTab(tabLayout.newTab().setText("Agendados"));
         tabLayout.addTab(tabLayout.newTab().setText("Concluidos"));
-        tabLayout.addTab(tabLayout.newTab().setText("Cancelados"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         final ViewPager viewPager = v.findViewById(R.id.viewpager);
         PagerAdapter pagerAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());

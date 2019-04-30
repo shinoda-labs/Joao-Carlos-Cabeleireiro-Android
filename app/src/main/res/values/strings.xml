@@ -92,9 +92,16 @@
     <string name="no">Não</string>
     <string name="yes">Sim</string>
     <string name="schedule_options">Opções do Agendamento</string>
-    <string name="cancel_schedule">Cancelar Horário</string>
+    <string name="cancel_schedule">Cancelar Agendamento</string>
     <string name="error_load_data">Erro ao carregados os dados</string>
     <string name="schedule_done_cancel_msg">Este agendamento já esta concluido, e não pode ser cancelado!</string>
     <string name="schedule_canceled_cancel_msg">Este agendamento já está cancelado!</string>
+    <string name="cancel_schedule_msg">Você deseja realmnte cancelar este agendamento?\n\nApós cancelado não podera ser revertido!</string>
+    <string name="canceling_schedule">Cancelando Horário</string>
+    <string name="error_cancel_schedule">Erro ao cancelar o horário! Tente novamente mais tarde!</string>
+    <string name="success_cancel_schedule">Horário cancelado com sucesso!</string>
+    <string name="ops">Ops ...</string>
+    <string name="undertand">Ok, entendi</string>
+    <string name="ops_msg">Parece que alguem foi mais rápido que você!\nEste horário acabou de ser agendando por outro cliente\nEscolha um horário diferente!</string>
 
 </resources>

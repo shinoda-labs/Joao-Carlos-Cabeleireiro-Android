@@ -28,7 +28,6 @@ public class Const {
     public static final String URL_400 = "400";
     public static final String SCHEDULED = "0";
     public static final String DONE = "1";
-    public static final String CANCELED = "2";
     public static final String CONFIRMED = "1";
     public static final String NOT_CONFIRMED = "0";
 

@@ -29,5 +29,7 @@ public class Url {
     public static  final String URL_VIEW_CLIENT_SCHEDULE =
             "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/view_client_schedule.php";
 
+    public static  final String URL_CANCEL_SCHEDULE =
+            "http://joaocarloscabeleireiro-com-br.umbler.net/user_schedule/cancel_schedule.php";
 
 }

@@ -28,6 +28,8 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.captain_miao.optroundcardview.OptRoundCardView;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+import com.github.thunder413.datetimeutils.DateTimeUnits;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonArray;
@@ -45,6 +47,7 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Url;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -59,6 +62,7 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.RESULT;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_400;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_404;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_ADD_SCHEDULED_TIME;
 
@@ -233,7 +237,7 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
                     hideTileState(tileImageTime, sideTime, tvTimeSelected);
                     time = "";
                 }
-            }, year, month, day);
+            }, year - 1, month - 3, day);
 
             pickerDialog.show();
         } else {
@@ -406,6 +410,24 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
                                 time = "";
                                 timeName = "";
                                 Toasts.toastSuccess(getContext(), mUser.getDisplayName() + getString(R.string.schedule_success));
+                            } else if (result.equals(URL_400)) {
+                                new MaterialStyledDialog.Builder(v.getContext())
+                                        .setTitle(getString(R.string.ops))
+                                        .setIcon(R.drawable.fast)
+                                        .setDescription(R.string.ops_msg)
+                                        .setPositiveText(getString(R.string.undertand))
+                                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                            @Override
+                                            public void onClick(@NonNull MaterialDialog d, @NonNull DialogAction which) {
+                                                d.dismiss();
+                                                dialog.dismiss();
+                                                hideTileState(tileImageTime, sideTime, tvTimeSelected);
+                                                time = "";
+                                                timeName = "";
+                                            }
+                                        })
+                                        .setCancelable(false)
+                                        .show();
                             } else {
                                 if (dialog.isShowing()) {
                                     dialog.dismiss();

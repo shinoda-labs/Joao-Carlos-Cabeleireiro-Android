@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleAllFragment;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleCanceledFragment;
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleDoneFragment;
 import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleToDoFragment;
 
@@ -30,9 +29,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             case 2:
                 ScheduleDoneFragment scheduleDoneFragment = new ScheduleDoneFragment();
                 return scheduleDoneFragment;
-            case 3:
-                ScheduleCanceledFragment scheduleCanceledFragment = new ScheduleCanceledFragment();
-                return scheduleCanceledFragment;
             default:
                 return null;
         }

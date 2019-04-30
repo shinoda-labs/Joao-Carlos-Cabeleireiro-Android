@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.shinodalabs.joaocarloscabeleireiro.Model.ScheduleUser;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
@@ -17,7 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CANCELED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DONE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 
@@ -79,15 +79,12 @@ public class ScheduleUserAdapter extends BaseAdapter {
             case DONE:
                 vStatus.setBackgroundColor(context.getResources().getColor(R.color.colorGreen));
                 break;
-            case CANCELED:
-                vStatus.setBackgroundColor(context.getResources().getColor(R.color.colorRed));
-                break;
         }
 
         Picasso.get().load(all.getImage()).into(tvImage);
         tvService.setText(all.getName());
         tvPrice.setText(String.format("Valor: R$%.2f", Double.parseDouble(all.getPrice())));
-        tvDate.setText(String.format("Dia: %s", all.getDate()));
+        tvDate.setText(String.format("Dia: %s", DateTimeUtils.formatWithPattern(all.getDate(), "dd/MM/yyyy")));
         tvTime.setText(String.format("Horário: %s", all.getTime()));
 
         return v;

@@ -48,6 +48,7 @@ public class ScheduleAllFragment extends Fragment {
     private ScheduleUserAdapter adapter;
     private List<ScheduleUser> scheduleUserList;
     private FirebaseAuth mAuth;
+    private View v;
 
     public ScheduleAllFragment() {
         // Required empty public constructor
@@ -57,7 +58,7 @@ public class ScheduleAllFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_schedule_all, container, false);
+        v = inflater.inflate(R.layout.fragment_schedule_all, container, false);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,6 +67,27 @@ public class ScheduleAllFragment extends Fragment {
         tvNoData = v.findViewById(R.id.tvNoData);
         tvNoData.setTypeface(Fonts.TypefaceLight(v.getContext()));
 
+        lstSchedule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ScheduleUser user = (ScheduleUser) parent.getAdapter().getItem(position);
+                Intent intent = new Intent(getContext(), ViewScheduleClientActivity.class);
+                intent.putExtra(ID_SCHEDULE, user.getId());
+                startActivity(intent);
+            }
+        });
+
+
+        return v;
+    }
+
+    @Override
+    public void onResume() {
+        loadScheduleData();
+        super.onResume();
+    }
+
+    private void loadScheduleData() {
         scheduleUserList = new ArrayList<ScheduleUser>();
         adapter = new ScheduleUserAdapter(getActivity(), scheduleUserList);
 
@@ -108,19 +130,6 @@ public class ScheduleAllFragment extends Fragment {
                         }
                     }
                 });
-
-        lstSchedule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ScheduleUser user = (ScheduleUser) parent.getAdapter().getItem(position);
-                Intent intent = new Intent(getContext(), ViewScheduleClientActivity.class);
-                intent.putExtra(ID_SCHEDULE, user.getId());
-                startActivity(intent);
-            }
-        });
-
-
-        return v;
     }
 
 }

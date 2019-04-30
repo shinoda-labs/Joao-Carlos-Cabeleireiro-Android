@@ -2,12 +2,17 @@ package com.shinodalabs.joaocarloscabeleireiro.Activitys;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.google.gson.JsonObject;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.koushikdutta.async.future.FutureCallback;
@@ -17,7 +22,6 @@ import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CANCELED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CONFIRMED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.CONFIRMED_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.DATE_SCHEDULE;
@@ -26,9 +30,12 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NAME_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NOT_CONFIRMED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.PRICE_SERVICE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.RESULT;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.STATUS_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME_SCHEDULE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.URL_200;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_CANCEL_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_VIEW_CLIENT_SCHEDULE;
 
 public class ViewScheduleClientActivity extends AppCompatActivity implements View.OnClickListener {
@@ -71,13 +78,56 @@ public class ViewScheduleClientActivity extends AppCompatActivity implements Vie
             case R.id.btnCancelSchedule:
                 switch (scheduleUser.getStatus()) {
                     case SCHEDULED:
-                        Toasts.toastSuccess(getApplicationContext(), getString(R.string.soon));
+                        new MaterialStyledDialog.Builder(ViewScheduleClientActivity.this)
+                                .setTitle(getString(R.string.cancel_schedule))
+                                .setIcon(R.drawable.delete)
+                                .setCancelable(false)
+                                .setDescription(getString(R.string.cancel_schedule_msg))
+                                .setPositiveText(getString(R.string.proceed))
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog d, @NonNull DialogAction which) {
+                                        createDialog(getString(R.string.please_wait), getString(R.string.canceling_schedule));
+                                        Ion.with(getApplicationContext())
+                                                .load(URL_CANCEL_SCHEDULE)
+                                                .setBodyParameter(ID_SCHEDULE, id)
+                                                .asJsonObject()
+                                                .setCallback(new FutureCallback<JsonObject>() {
+                                                    @Override
+                                                    public void onCompleted(Exception e, JsonObject result) {
+                                                        try {
+                                                            if (result.get(RESULT).getAsString().equals(URL_200)) {
+                                                                if (dialog.isShowing()) {
+                                                                    dialog.dismiss();
+                                                                }
+                                                                Toasts.toastSuccess(getApplicationContext(), getString(R.string.success_cancel_schedule));
+                                                                finish();
+                                                            } else {
+                                                                if (dialog.isShowing()) {
+                                                                    dialog.dismiss();
+                                                                }
+                                                                Toasts.toastError(getApplicationContext(), getString(R.string.error_cancel_schedule));
+                                                            }
+                                                        } catch (Exception x) {
+                                                            if (dialog.isShowing()) {
+                                                                dialog.dismiss();
+                                                            }
+                                                            Toasts.toastError(getApplicationContext(), x.getMessage());
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                })
+                                .setNegativeText(getString(R.string.cancel))
+                                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog d, @NonNull DialogAction which) {
+                                        d.dismiss();
+                                    }
+                                }).show();
                         break;
                     case DONE:
                         Toasts.toastInfo(getApplicationContext(), getString(R.string.schedule_done_cancel_msg));
-                        break;
-                    case CANCELED:
-                        Toasts.toastInfo(getApplicationContext(), getString(R.string.schedule_canceled_cancel_msg));
                         break;
                 }
                 break;
@@ -107,7 +157,7 @@ public class ViewScheduleClientActivity extends AppCompatActivity implements Vie
 
                             tvService.setText(scheduleUser.getName());
                             tvPrice.setText(String.format("R$%.2f", Double.parseDouble(scheduleUser.getPrice())));
-                            tvDate.setText(scheduleUser.getDate());
+                            tvDate.setText(DateTimeUtils.formatWithPattern(scheduleUser.getDate(), "dd/MM/yyyy"));
                             tvTime.setText(scheduleUser.getTime());
 
                             switch (scheduleUser.getConfirmed()) {
@@ -122,9 +172,6 @@ public class ViewScheduleClientActivity extends AppCompatActivity implements Vie
                             switch (scheduleUser.getStatus()) {
                                 case SCHEDULED:
                                     tvStatus.setText(R.string.scheduled);
-                                    break;
-                                case CANCELED:
-                                    tvStatus.setText(R.string.canceled);
                                     break;
                                 case DONE:
                                     tvStatus.setText(R.string.done);

@@ -7,8 +7,8 @@ android {
         applicationId "com.shinodalabs.joaocarloscabeleireiro"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.9"
+        versionCode 10
+        versionName "1.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -35,6 +35,7 @@ dependencies {
     implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
     implementation 'com.github.medyo:android-about-page:1.2.4'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.github.thunder413:DateTimeUtils:1.0'
 
     implementation 'com.google.firebase:firebase-auth:16.2.1'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
