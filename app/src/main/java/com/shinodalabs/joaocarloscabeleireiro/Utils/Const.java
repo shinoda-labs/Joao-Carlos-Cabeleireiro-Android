@@ -41,4 +41,6 @@ public class Const {
     public static final String JOAO_INSTAGRAM = "jc_cabeleireiro_";
     public static final String JOAO_EMAIL = "jccabelereiro.app@gmail.com";
 
+    public static final String ADM = "49XdKSojbCSBtIkA1pRAonW0xfG2";
+
 }

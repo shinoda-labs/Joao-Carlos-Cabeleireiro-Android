@@ -36,7 +36,7 @@ public class BottomSheetDialogService extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.bottom_sheet_service, container, false);
+        View v = inflater.inflate(R.layout.dialog_service, container, false);
 
         ListView lstService = v.findViewById(R.id.lstService);
         TextView tvServices = v.findViewById(R.id.tvServices);

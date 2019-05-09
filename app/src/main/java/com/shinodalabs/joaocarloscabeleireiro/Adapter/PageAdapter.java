@@ -4,13 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleAllFragment;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleDoneFragment;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules.ScheduleToDoFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedules.ScheduleAllFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedules.ScheduleDoneFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedules.ScheduleToDoFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Model.User;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
-    int countTab;
+    private int countTab;
 
     public PageAdapter(FragmentManager fm, int countTab) {
         super(fm);

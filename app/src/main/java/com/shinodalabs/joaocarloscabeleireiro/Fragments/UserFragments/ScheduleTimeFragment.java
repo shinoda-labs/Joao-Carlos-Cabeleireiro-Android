@@ -1,4 +1,4 @@
-package com.shinodalabs.joaocarloscabeleireiro.Fragments;
+package com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments;
 
 
 import android.app.AlertDialog;
@@ -28,8 +28,6 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.captain_miao.optroundcardview.OptRoundCardView;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
-import com.github.thunder413.datetimeutils.DateTimeUnits;
-import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonArray;
@@ -47,7 +45,6 @@ import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Url;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -248,7 +245,7 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
     private void openService() {
         final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
         LayoutInflater inflater = this.getLayoutInflater();
-        View v = inflater.inflate(R.layout.bottom_sheet_service, null);
+        View v = inflater.inflate(R.layout.dialog_service, null);
 
         ListView lstService = v.findViewById(R.id.lstService);
         TextView tvServices = v.findViewById(R.id.tvServices);
@@ -317,7 +314,7 @@ public class ScheduleTimeFragment extends Fragment implements View.OnClickListen
     private void openTime() {
         final AlertDialog dialogBuilder = new AlertDialog.Builder(getContext()).create();
         LayoutInflater inflater = this.getLayoutInflater();
-        View v = inflater.inflate(R.layout.bottom_sheet_time, null);
+        View v = inflater.inflate(R.layout.dialog_time, null);
 
         TextView tvTime = v.findViewById(R.id.tvTime);
         GridView gvTime = v.findViewById(R.id.gvTime);

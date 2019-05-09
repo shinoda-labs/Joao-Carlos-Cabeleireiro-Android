@@ -19,9 +19,10 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedulesFragment;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.ProfileFragment;
-import com.shinodalabs.joaocarloscabeleireiro.Fragments.ScheduleTimeFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedulesFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.ProfileFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.ScheduleTimeFragment;
+import com.shinodalabs.joaocarloscabeleireiro.Model.User;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.squareup.picasso.Picasso;
 
@@ -41,12 +42,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         setSupportActionBar(toolbar);
 
-        navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view_client);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawe_open, R.string.navigation_drawe_close);
@@ -79,12 +81,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .commit();
                 getSupportActionBar().setSubtitle(getString(R.string.scedule_time));
                 ViewCompat.setElevation(toolbar, 5);
+                navigationView.setCheckedItem(R.id.nav_schedule_time);
                 break;
             case R.id.nav_my_schedules:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MySchedulesFragment())
                         .commit();
                 getSupportActionBar().setSubtitle(getString(R.string.my_schedules));
                 ViewCompat.setElevation(toolbar, 0);
+                navigationView.setCheckedItem(R.id.nav_my_schedules);
                 break;
             case R.id.nav_about:
                 Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
@@ -95,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .commit();
                 getSupportActionBar().setSubtitle(getString(R.string.profile));
                 ViewCompat.setElevation(toolbar, 5);
+                navigationView.setCheckedItem(R.id.nav_edit_profile);
                 break;
             case R.id.nav_exit:
                 new MaterialStyledDialog.Builder(this)
@@ -124,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onResume() {
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser == null) {
             logout();
         } else {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.shinodalabs.joaocarloscabeleireiro.Model.ScheduleUser;
+import com.shinodalabs.joaocarloscabeleireiro.Model.User;
 import com.shinodalabs.joaocarloscabeleireiro.R;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Fonts;
 import com.shinodalabs.joaocarloscabeleireiro.Utils.Toasts;
@@ -132,6 +134,16 @@ public class ViewScheduleClientActivity extends AppCompatActivity implements Vie
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getScheduleData() {

@@ -1,4 +1,4 @@
-package com.shinodalabs.joaocarloscabeleireiro.Fragments;
+package com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments;
 
 
 import android.os.Bundle;

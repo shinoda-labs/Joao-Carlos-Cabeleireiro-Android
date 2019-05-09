@@ -1,4 +1,4 @@
-package com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules;
+package com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedules;
 
 
 import android.content.Intent;

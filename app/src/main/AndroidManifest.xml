@@ -14,11 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.ViewScheduleClientActivity"
             android:screenOrientation="portrait"
-            tools:ignore="InnerclassSeparator">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activitys.MainActivity" />
-        </activity>
+            tools:ignore="InnerclassSeparator"/>
         <activity
             android:name=".Activitys.AboutActivity"
             android:screenOrientation="portrait"

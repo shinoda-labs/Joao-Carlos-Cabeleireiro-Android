@@ -43,7 +43,7 @@ public class BottomSheetDialogTime extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.bottom_sheet_time, container, false);
+        View v = inflater.inflate(R.layout.dialog_time, container, false);
 
         TextView tvTime = v.findViewById(R.id.tvTime);
         GridView gvTime = v.findViewById(R.id.gvTime);

@@ -1,4 +1,4 @@
-package com.shinodalabs.joaocarloscabeleireiro.Fragments.MySchedules;
+package com.shinodalabs.joaocarloscabeleireiro.Fragments.UserFragments.MySchedules;
 
 
 import android.content.Intent;
@@ -33,15 +33,14 @@ import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.ID_USER;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.IMAGE_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.NAME_SERVICE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.PRICE_SERVICE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.SCHEDULED;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.STATUS_SCHEDULE;
 import static com.shinodalabs.joaocarloscabeleireiro.Utils.Const.TIME_SCHEDULE;
-import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_CLIENT_SCHEDULE;
+import static com.shinodalabs.joaocarloscabeleireiro.Utils.Url.URL_PREVIEW_ALL_CLIENT_SCHEDULE;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ScheduleToDoFragment extends Fragment {
+public class ScheduleAllFragment extends Fragment {
 
     private ListView lstSchedule;
     private ProgressBar pbLoaging;
@@ -51,7 +50,7 @@ public class ScheduleToDoFragment extends Fragment {
     private FirebaseAuth mAuth;
     private View v;
 
-    public ScheduleToDoFragment() {
+    public ScheduleAllFragment() {
         // Required empty public constructor
     }
 
@@ -59,8 +58,7 @@ public class ScheduleToDoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_schedule_to_do, container, false);
+        v = inflater.inflate(R.layout.fragment_schedule_all, container, false);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -78,6 +76,7 @@ public class ScheduleToDoFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
         return v;
     }
@@ -97,9 +96,8 @@ public class ScheduleToDoFragment extends Fragment {
         scheduleUserList.clear();
 
         Ion.with(v.getContext())
-                .load(URL_PREVIEW_CLIENT_SCHEDULE)
+                .load(URL_PREVIEW_ALL_CLIENT_SCHEDULE)
                 .setBodyParameter(ID_USER, mAuth.getCurrentUser().getUid())
-                .setBodyParameter(STATUS_SCHEDULE, SCHEDULED)
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override
